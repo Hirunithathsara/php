@@ -1,3 +1,29 @@
+<?php
+if(isset($_POST['submit'])){
+  $username = $_POST['user'];
+  $email = $_POST['email'];
+  $password = $_POST['pass'];
+  $cpassword = $_POST['cpass'];
+
+  $sql = "select * from users where username='$username'";
+  $result= mysqli_query($conn,$sql);
+  $count_user=mysqli_num_rows($result);
+
+  $sql = "select * from users where email='$email'";
+  $result= mysqli_query($conn,$sql);
+  $count_user=mysqli_num_rows($result);
+
+  if($count_user==0 || $count_rows==0){
+    
+
+  }
+  else{
+    alert("User alredy exists!!");
+    window.location.href = "index.php"
+  }
+
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>

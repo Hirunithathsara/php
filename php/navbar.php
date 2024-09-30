@@ -15,9 +15,9 @@
       </ul>
       <form class="d-flex" >
        
-        <button class="btn btn-outline-success mx-2" type="submit">Signup</button>
-        <button class="btn btn-outline-primary mx-2" type="submit">Login</button>
-        <button class="btn btn-outline-danger mx-2" type="submit">Logout</button>
+        <a class="btn btn-outline-success mx-2" type="submit" href="signup.php">Signup</a>
+        <a class="btn btn-outline-primary mx-2" type="submit" href="login.php">Login</a>
+        <a class="btn btn-outline-danger mx-2" type="submit" href="logout.php">Logout</a>
       </form>
     </div>
   </div>
