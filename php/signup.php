@@ -1,9 +1,10 @@
 <?php
 if(isset($_POST['submit'])){
-  $username = $_POST['user'];
-  $email = $_POST['email'];
-  $password = $_POST['pass'];
-  $cpassword = $_POST['cpass'];
+  include "connection.php";
+  $username = mysqli_real_escape_string ($conn,$_POST['user']);
+  $email =   mysqli_real_escape_string($conn,$_POST['email']);
+  $password =  mysqli_real_escape_string($conn,$_POST['pass']);
+  $cpassword =  mysqli_real_escape_string ($conn,$_POST['cpass']);
 
   $sql = "select * from users where username='$username'";
   $result= mysqli_query($conn,$sql);
@@ -14,12 +15,25 @@ if(isset($_POST['submit'])){
   $count_user=mysqli_num_rows($result);
 
   if($count_user==0 || $count_rows==0){
-    
+    if($password==$cpassword){
+      $hash = password_hash($password, PASSWORD_DEFAULT);
+      $sql = "insert into users(username,email,password) values('$username' , '$email','$hash')";
+      $result = mysqli_query($conn, $sql);
+
+    }
+    else{
+      echo '<script>
+      alert("Passwords do not match!!!");
+       window.location.href = "signup.php";
+       </script>';
+    }
 
   }
   else{
+     echo '<script>
     alert("User alredy exists!!");
-    window.location.href = "index.php"
+    window.location.href = "index.php";
+     </script>';
   }
 
 }
@@ -47,6 +61,8 @@ if(isset($_POST['submit'])){
             <input type="password" id="pass" name ="pass" required><br><br>
             <label> Retype Password</lebel>
             <input type="password" id="cpass" name ="cpass" required><br><br>
+
+            <input type= "submit" id="btn" value="Signup" name= "submit"/>
 
 
     </div>
