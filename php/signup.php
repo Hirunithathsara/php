@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
   $result= mysqli_query($conn,$sql);
   $count_user=mysqli_num_rows($result);
 
-  if($count_user==0 || $count_rows==0){
+  if($count_user==0 || $count_email==0){
     if($password==$cpassword){
       $hash = password_hash($password, PASSWORD_DEFAULT);
       $sql = "insert into users(username,email,password) values('$username' , '$email','$hash')";
