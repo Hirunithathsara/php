@@ -10,14 +10,12 @@
     <div id = "form">
         <h1>Signup Form</h1>
         <form name="form" action="signup.php" method= "POST">
-            <label> Enter Username</lebel>
+            <label> Enter Username/Email</lebel>
             <input type="text" id="user" name ="user" required><br><br>
-            <label> Enter Email</lebel>
-            <input type="email" id="email" name ="email" required><br><br>
+           
             <label> Enter Password</lebel>
             <input type="password" id="pass" name ="pass" required><br><br>
-            <label> Retype Password</lebel>
-            <input type="password" id="cpass" name ="cpass" required><br><br>
+           
 
 
     </div>
