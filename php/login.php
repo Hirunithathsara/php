@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id = "form">
-        <h1>Signup Form</h1>
+        <h1>Login Form</h1>
         <form name="form" action="signup.php" method= "POST">
             <label> Enter Username/Email</lebel>
             <input type="text" id="user" name ="user" required><br><br>
