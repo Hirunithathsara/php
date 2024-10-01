@@ -1,5 +1,24 @@
 <?php
-if()
+if(isset($_POST['submit'])){
+  $username = mysqli_real_escape_string($_POST['user']);
+  $username = mysqli_real_escape_string($_POST['pass']);
+
+  $sql = "select * from users where username = '$username' or email='$username' ";
+  $result= mysqli_query($conn,$sql);
+  $row= mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+  if($row){
+    if(password_verify($password, $row["password"])){
+      header("Location: welcome.php");
+    }
+  }
+  else {
+    echo '<script>
+    alert("Invalid username or password!!");
+    window.location.href= "login.php";
+    </script>';
+  }
+}
 
 ?>
 <!doctype html>
@@ -17,12 +36,16 @@ if()
 
     <div id = "form">
         <h1>Login Form</h1>
-        <form name="form" action="signup.php" method= "POST">
+        <form name="form" action="login.php" method= "POST">
             <label> Enter Username/Email</lebel>
             <input type="text" id="user" name ="user" required><br><br>
            
             <label> Enter Password</lebel>
             <input type="password" id="pass" name ="pass" required><br><br>
+            <input type= "submit" id="btn" value="Login" name= "submit"/>
+
+
+</form>
            
 
 
